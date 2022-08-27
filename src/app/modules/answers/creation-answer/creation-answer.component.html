@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>New Answer</h2>
+
+<div mat-dialog-content>
+	<form [formGroup]="answerForm">
+		<p>
+			<mat-form-field appearance="outline">
+				<mat-label>Name*</mat-label>
+				<input formControlName="name" matInput />
+				<mat-error *ngIf="answerForm.invalid">Name required</mat-error>
+			</mat-form-field>
+		</p>
+
+		<p>
+			<mat-form-field appearance="outline">
+				<mat-label>Question*</mat-label>
+				<input
+					formControlName="question"
+					type="text"
+					placeholder="Search a question"
+					matInput
+					[matAutocomplete]="auto"
+					required
+				/>
+				<mat-error *ngIf="answerForm.invalid"
+					>Question required</mat-error
+				>
+				<mat-autocomplete
+					#auto="matAutocomplete"
+					[displayWith]="displayFn"
+					(optionSelected)="onSelected($event)"
+				>
+					<mat-option
+						*ngFor="let option of filteredOptions | async"
+						[value]="option"
+					>
+						{{ option.title }}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
+		</p>
+	</form>
+</div>
+<div mat-dialog-actions>
+	<button
+		mat-stroked-button
+		cdkFocusInitial
+		color="primary"
+		(click)="onSave()"
+		[disabled]="answerForm.invalid || !isSelected"
+	>
+		Ok
+	</button>
+	<a mat-stroked-button (click)="onClose()"> Cancel </a>
+</div>

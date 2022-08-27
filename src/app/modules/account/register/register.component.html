@@ -1,0 +1,120 @@
+<!-- <p>Register</p> -->
+
+<div class="center-content">
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title>Register</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<form [formGroup]="formRegister">
+				<!-- <p>
+					<mat-form-field appearance="outline">
+						<mat-label>Name*</mat-label>
+						<input formControlName="name" matInput />
+						<mat-error *ngIf="formRegister.invalid"
+							>Name required</mat-error
+						>
+					</mat-form-field>
+				</p>
+
+				<p>
+					<mat-form-field appearance="outline">
+						<mat-label>First Name*</mat-label>
+						<input formControlName="firstName" matInput />
+						<mat-error *ngIf="formRegister.invalid"
+							>First Name required</mat-error
+						>
+					</mat-form-field>
+				</p>
+
+				<p>
+					<mat-form-field appearance="outline">
+						<mat-label>Last Name*</mat-label>
+						<input formControlName="lastName" matInput />
+						<mat-error *ngIf="formRegister.invalid">Last Name required </mat-error>
+					</mat-form-field>
+				</p> -->
+
+				<p>
+					<mat-form-field appearance="outline">
+						<mat-label>Email*</mat-label>
+						<input formControlName="email" matInput />
+						<mat-error *ngIf="formRegister.invalid"
+							>Email required</mat-error
+						>
+					</mat-form-field>
+				</p>
+
+				<p>
+					<mat-form-field appearance="outline">
+						<mat-label>Password*</mat-label>
+						<input
+							[type]="hide ? 'password' : 'text'"
+							formControlName="password"
+							matInput
+							required
+						/>
+						<!-- placeholder="Password" -->
+						<input
+							matInput
+							[type]="hide ? 'password' : 'text'"
+							formControlName="password"
+							required
+						/>
+
+						<mat-icon matSuffix (click)="hide = !hide">{{
+							hide ? "visibility_off" : "visibility"
+						}}</mat-icon>
+
+						<mat-error *ngIf="formRegister.invalid"
+							>Password required</mat-error
+						>
+					</mat-form-field>
+				</p>
+
+				<p>
+					<mat-form-field appearance="outline">
+						<mat-label>Confirm Password*</mat-label>
+						<input
+							[type]="hide ? 'password' : 'text'"
+							formControlName="passwordConfirm"
+							matInput
+							required
+						/>
+						<input
+							matInput
+							[type]="hide ? 'password' : 'text'"
+							formControlName="passwordConfirm"
+							required
+						/>
+
+						<mat-icon matSuffix (click)="hide = !hide">{{
+							hide ? "visibility_off" : "visibility"
+						}}</mat-icon>
+
+						<mat-error *ngIf="formRegister.invalid"
+							>Password confirm required</mat-error
+						>
+					</mat-form-field>
+				</p>
+
+				<p>
+					<button
+						mat-flat-button
+						color="primary"
+						(click)="register()"
+					>
+						Register
+					</button>
+				</p>
+
+				<p class="center">
+					¿Already have account?<a routerLink="/login">
+						<span class="login-text">Login</span></a
+					>
+				</p>
+			</form>
+		</mat-card-content>
+		<!-- <mat-card-footer> Footer </mat-card-footer> -->
+	</mat-card>
+</div>

@@ -1,0 +1,104 @@
+<h2 class="title">{{ surveyData.name | uppercase }}</h2>
+<!-- orientation="vertical"  -->
+
+<mat-stepper [linear]="isLinear" #stepper [animationDuration]="2000">
+	<div *ngFor="let question of surveyData.questions; let i = index">
+		<mat-step [stepControl]="question.id" [editable]="isEditable">
+			<form>
+				<ng-template matStepLabel
+					><mat-icon color="primary"
+						>playlist_add_check</mat-icon
+					></ng-template
+				>
+				<p class="item-question">{{ question.title }}</p>
+
+				<mat-radio-group
+					[(ngModel)]="prueba"
+					name="item.id"
+					fxLayout="column"
+					fxLayoutAlign="center space-around"
+				>
+					<mat-radio-button
+						*ngFor="let answer of question.answers"
+						[name]="answer.title"
+						[value]="answer.id"
+						(change)="selectOption(question.id, answer.id)"
+						checked="false"
+						required="true"
+						>{{ answer.title }}</mat-radio-button
+					>
+				</mat-radio-group>
+
+				<div
+					[hidden]="isSelected"
+					class="alert alert-danger"
+					style="color: #a94442"
+				>
+					Option required
+				</div>
+			</form>
+
+			<div class="btn-move">
+				<button
+					mat-raised-button
+					color="success"
+					[disabled]="false"
+					(click)="move(index)"
+				>
+					Next
+				</button>
+			</div>
+		</mat-step>
+	</div>
+
+	<mat-step [stepControl]="surveyData.questions.length + 1">
+		<br />
+		<ng-template matStepLabel>Done</ng-template>
+		<h2>You survey is completed.</h2>
+		<div>
+			<button
+				mat-raised-button
+				color="success"
+				[disabled]="false"
+				(click)="sendAnswer($event)"
+			>
+				Send
+			</button>
+		</div>
+	</mat-step>
+</mat-stepper>
+
+<div fxLayout="row" fxLayoutAlign="center center">
+	<mat-card
+		class="example-card"
+		*ngIf="completed"
+		fxLayout="column"
+		fxLayoutAlign="center center"
+	>
+		<mat-card-subtitle><h1>HELLO</h1></mat-card-subtitle>
+		<mat-card-title
+			><h2>
+				{{
+					userData.element.firstName + " " + userData.element.lastName
+						| uppercase
+				}}
+			</h2></mat-card-title
+		>
+		<mat-card-content>
+			<section>
+				<h2>YOU SCORE</h2>
+				<p style="font-size: 50px; font-weight: bold; color: #673ab7">
+					{{ userData.points + " " + "%" }}
+				</p>
+			</section>
+		</mat-card-content>
+		<mat-divider inset></mat-divider>
+		<mat-card-actions>
+			<button mat-button>FEEDBACK</button>
+			<button mat-button>SHARE</button>
+		</mat-card-actions>
+		<mat-card-footer>
+			<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+		</mat-card-footer>
+	</mat-card>
+</div>

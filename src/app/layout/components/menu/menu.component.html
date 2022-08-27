@@ -1,0 +1,99 @@
+<mat-toolbar color="primary">
+	<div>
+		<img
+			class="logo-img"
+			src="https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
+			loading="lazy"
+			decoging="async"
+			alt=""
+			routerLink=""
+		/>
+	</div>
+
+	<div>
+		<a mat-button class="title-logo" mat-button routerLink="">App</a>
+	</div>
+
+	<div>
+		<a mat-button [routerLink]="['surveys']" routerLinkActive="active">
+			Survey
+		</a>
+	</div>
+	<app-authorize [rol]="'admin'">
+		<ng-container authorized>
+			<div>
+				<a
+					mat-button
+					[routerLink]="['questions']"
+					routerLinkActive="active"
+				>
+					Questions
+				</a>
+			</div>
+
+			<div>
+				<a
+					mat-button
+					[routerLink]="['answers']"
+					routerLinkActive="active"
+				>
+					Answers
+				</a>
+			</div>
+
+			<div>
+				<a
+					mat-button
+					[routerLink]="['users']"
+					routerLinkActive="active"
+				>
+					Users
+				</a>
+			</div>
+
+			<div>
+				<a
+					mat-button
+					[routerLink]="['roles']"
+					routerLinkActive="active"
+				>
+					Roles
+				</a>
+			</div>
+
+			<div>
+				<a
+					mat-button
+					[routerLink]="['permissions']"
+					routerLinkActive="active"
+				>
+					Permissions
+				</a>
+			</div>
+
+			<div>
+				<a
+					mat-button
+					[routerLink]="['teams']"
+					routerLinkActive="active"
+				>
+					Teams
+				</a>
+			</div>
+		</ng-container>
+	</app-authorize>
+
+	<span class="example-spacer"></span>
+
+	<app-authorize>
+		<ng-container authorized>
+			<span>Hola, Juan</span>
+			<a mat-button routerLink="/login">Logout</a>
+		</ng-container>
+
+		<ng-container noAuthorized>
+			<a mat-button routerLink="/login">Login</a>
+			<a mat-button routerLink="/register">Register</a>
+		</ng-container>
+	</app-authorize>
+</mat-toolbar>

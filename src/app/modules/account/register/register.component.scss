@@ -1,0 +1,38 @@
+.contenedor {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem auto;
+	max-width: 500px;
+}
+
+.center-content {
+	display: flex;
+	flex-direction: column;
+	margin: 1rem auto;
+	max-width: 500px;
+}
+
+button {
+	// margin-right: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 500px;
+}
+
+mat-form-field {
+	width: 100%;
+	max-width: 500px;
+}
+
+.center {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-text {
+	margin: 2px;
+}

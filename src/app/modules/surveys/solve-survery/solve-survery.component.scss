@@ -1,0 +1,39 @@
+.item-question {
+	// background-color: red;
+	font-weight: bold;
+	font-size: 20px;
+}
+.mat-stepper-horizontal {
+	margin-top: 8px;
+}
+
+mat-stepper {
+	overflow: auto;
+}
+
+:host ::ng-deep .mat-step-icon-selected {
+	// color: white; // your styles
+	font-weight: bold;
+	// font-size: 18px;
+}
+
+mat-radio-button {
+	padding-bottom: 10px;
+}
+
+.btn-move {
+	margin-top: 15px;
+}
+
+.example-card {
+	max-width: 800px;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+	border-left: 5px solid #42a948;
+}
+
+.ng-invalid:not(form) {
+	border-left: 5px solid #a94442;
+}
