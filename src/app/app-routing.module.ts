@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IsAdminGuard } from './is-admin.guard';
 import { LandingPageComponent } from './layout/components/landing-page/landing-page.component';
 import { LoginComponent } from './modules/account/login/login.component';
 import { PasswordChangeComponent } from './modules/account/password-change/password-change.component';
 import { PasswordForgotComponent } from './modules/account/password-forgot/password-forgot.component';
 import { RegisterComponent } from './modules/account/register/register.component';
+import { IsAdminGuard } from './modules/account/security/guard/is-admin.guard';
+import { IsUserGuard } from './modules/account/security/guard/is-user.guard';
 import { HomeAnswerComponent } from './modules/answers/home-answer/home-answer.component';
 import { HomePermissionComponent } from './modules/permissons/home-permission/home-permission.component';
 import { HomeQuestionComponent } from './modules/questions/home-question/home-question.component';
@@ -29,9 +30,9 @@ const routes: Routes = [
 	{ path: 'questions', component: HomeQuestionComponent, canActivate: [IsAdminGuard] },
 	{ path: 'answers', component: HomeAnswerComponent, canActivate: [IsAdminGuard] },
 	{ path: 'users', component: HomeUsersComponent, canActivate: [IsAdminGuard] },
-	{ path: 'roles', component: HomeRolComponent, canActivate: [IsAdminGuard] },
-	{ path: 'permissions', component: HomePermissionComponent, canActivate: [IsAdminGuard] },
-	{ path: 'teams', component: HomeTeamComponent, canActivate: [IsAdminGuard] },
+	{ path: 'roles', component: HomeRolComponent, canActivate: [IsUserGuard] },
+	{ path: 'permissions', component: HomePermissionComponent, canActivate: [IsUserGuard] },
+	{ path: 'teams', component: HomeTeamComponent, canActivate: [IsUserGuard] },
 
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../account.service';
+import { LoginResponseDto } from '../models/login-response-dto';
 import { UserAuthenticationDto } from '../models/user-authentication-dto';
+import { SecurityService } from '../security/security.service';
 
 @Component({
 	selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private formBuilder: FormBuilder,
-		private service: AccountService) {
+		private service: SecurityService) {
 
 		this.formLogin = this.formBuilder.group({
 			email: ['', {
@@ -42,7 +43,8 @@ export class LoginComponent implements OnInit {
 			.subscribe({
 				next: (response: any) => {
 					console.log(response);
-					this.router.navigate(['/surveys']);
+					this.service.saveToken(response);
+					this.router.navigate(['/']);
 				},
 				error: (error: any) => {
 					console.error(error);

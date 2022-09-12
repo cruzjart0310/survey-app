@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../account.service';
 import { UserRegistrationDto } from '../models/user-registration-dto';
+import { SecurityService } from '../security/security.service';
 
 @Component({
 	selector: 'app-register',
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private formBuilder: FormBuilder,
-		private service: AccountService) {
+		private service: SecurityService) {
 
 		this.formRegister = this.formBuilder.group({
 			name: ['', {

@@ -28,6 +28,8 @@ import { PasswordForgotComponent } from './modules/account/password-forgot/passw
 import { PasswordChangeComponent } from './modules/account/password-change/password-change.component';
 import { SurveyAssingComponent } from './modules/surveys/survey-assing/survey-assing.component';
 import { FullNamePipe } from './modules/surveys/pipes/full-name.pipe';
+import { InterceptorService } from './modules/account/security/interceptors/interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -66,7 +68,11 @@ import { FullNamePipe } from './modules/surveys/pipes/full-name.pipe';
 		LayoutModule,
 		SharedModule,
 	],
-	providers: [],
+	providers: [{
+		provide: HTTP_INTERCEPTORS,
+		useClass: InterceptorService,
+		multi: true
+	}],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

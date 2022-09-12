@@ -23,7 +23,6 @@ import { PasswordForgotComponent } from './account/password-forgot/password-forg
 import { PasswordChangeComponent } from './account/password-change/password-change.component';
 import { SurveyAssingComponent } from './surveys/survey-assing/survey-assing.component';
 import { FullNamePipe } from './surveys/pipes/full-name.pipe';
-import { AuthorizeComponent } from './security/authorize/authorize.component';
 //import { SolveSurveryComponent } from './surveys/solve-survery/solve-survery.component';
 // import { LayoutModule } from '../layout/layout.module';
 
@@ -62,6 +61,7 @@ import { AuthorizeComponent } from './security/authorize/authorize.component';
 		//   SurveyAssingComponent
 
 		FullNamePipe,
+		//AuthorizeComponent,
 		// AuthorizeComponent
 	],
 	imports: [

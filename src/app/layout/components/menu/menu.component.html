@@ -13,14 +13,18 @@
 	<div>
 		<a mat-button class="title-logo" mat-button routerLink="">App</a>
 	</div>
-
-	<div>
-		<a mat-button [routerLink]="['surveys']" routerLinkActive="active">
-			Survey
-		</a>
-	</div>
-	<app-authorize [rol]="'admin'">
+	<app-authorize [rol]="'administrator'">
 		<ng-container authorized>
+			<div>
+				<a
+					mat-button
+					[routerLink]="['surveys']"
+					routerLinkActive="active"
+				>
+					Survey
+				</a>
+			</div>
+
 			<div>
 				<a
 					mat-button
@@ -50,7 +54,10 @@
 					Users
 				</a>
 			</div>
-
+		</ng-container>
+	</app-authorize>
+	<app-authorize [rol]="'user'">
+		<ng-container authorized>
 			<div>
 				<a
 					mat-button
@@ -87,8 +94,8 @@
 
 	<app-authorize>
 		<ng-container authorized>
-			<span>Hola, Juan</span>
-			<a mat-button routerLink="/login">Logout</a>
+			<span>Hola, {{ service.getFieldJWT("email") }}</span>
+			<a mat-button (click)="logOut()">Logout</a>
 		</ng-container>
 
 		<ng-container noAuthorized>
