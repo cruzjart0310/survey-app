@@ -1,6 +1,6 @@
 export interface UserAnswerDto {
 	user: User;
-	answer: any
+	answer: Answer[];
 }
 
 export interface User {
@@ -11,4 +11,5 @@ export interface User {
 export interface Answer {
 	id: number;
 	title: string;
+	questionId: number;
 }

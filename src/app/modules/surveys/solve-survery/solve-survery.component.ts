@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { ActivatedRoute } from '@angular/router';
-import { UserAnswerDto } from '../models/user-answer-dto';
+import { Answer, UserAnswerDto } from '../models/user-answer-dto';
 import { SurveyService } from '../survey.service';
 import { UserAnswerService } from '../user-answer.service';
 import { FullNamePipe } from '../pipes/full-name.pipe';
@@ -26,12 +26,12 @@ export class SolveSurveryComponent implements AfterViewInit, OnInit {
 	indexInArray: number = 0;
 	message: string = "";
 	userData: any = {};
-	questionArr: any = [];
+	answersList: Answer[] = [{ id: 1, title: '', questionId: 1 }];
 	required = true;
 	surveyData: any = [];
 	surveyId!: number;
 	totalStepsCount!: number;
-	userAnswerData: UserAnswerDto = { user: { id: '', name: '' }, answer: [] };
+	userAnswerData: UserAnswerDto = { user: { id: '', name: '' }, answer: [{ id: 1, title: '', questionId: 1 }] };
 	@ViewChild('stepper') stepper!: MatStepper;
 
 	constructor(
@@ -58,74 +58,24 @@ export class SolveSurveryComponent implements AfterViewInit, OnInit {
 	}
 
 	selectOption(questionId: number, answerId: number) {
-
-		let item = {
-			'questionId': questionId,
-			'answerId': answerId
+		let item: Answer = {
+			id: answerId,
+			title: "title",
+			questionId: questionId
 		};
 
-		if (this.questionArr.length > 0) {
-			let obj = this.questionArr.filter((elem: any, index: any) => {
-				if (item.questionId == elem.questionId) {
-					this.questionArr.splice(index, 1);
+		if (this.answersList.length) {
+			this.answersList.filter((elem: any, index: any) => {
+				if (questionId == elem.questionId) {
+					this.answersList.splice(index, 1);
 				}
 			});
-			console.log("Object deleted:" + JSON.stringify(obj));
 		}
 
-		this.questionArr[this.indexInArray] = item;
-		console.log("Current values in Array:" + JSON.stringify(this.questionArr));
-		this.indexInArray = this.indexInArray + 1;
-
-		// if (this.userAnswerData.answer.length > 0) {
-		// 	let obj = this.userAnswerData.answer.filter(function (elem: any, i: number, rep: any) {
-		// 		let e = elem;
-		// 		console.log(JSON.stringify(e))
-		// 		// if (elem) {
-		// 		// 	console.log('ok')
-		// 		// }
-
-		// 		// console.log('elem: ' + JSON.stringify(elem))
-		// 		// console.log('i: ' + i)
-		// 		// console.log('rep: ' + JSON.stringify(rep))
-		// 		return i == rep.indexOf(elem);
-		// 	});
-
-		// 	// console.log(JSON.stringify(obj))
-		// }
-
-		// if (this.userAnswerData.answer.length > 0 && this.currentQuestionId == questionId) {
-		// 	this.userAnswerData.answer.splice();
-		// }
-
+		this.answersList.push(item);
 		this.userAnswerData.user.id = 'b5dbc387-eed6-42fb-b9d8-525094a171b0';
-		this.userAnswerData.answer.push({ id: answerId, title: `answer-${answerId}` });
+		this.userAnswerData.answer = this.answersList;
 		this.isSelected = true;
-
-		// console.log(answerId, questionId);
-		// console.log(this.prueba);
-
-		// if (this.userAnswerData.answer.length > 0) {
-		// let value = this.userAnswerData.answer.filter();
-		// if (value.length > 0) {
-		// 	//removeEventListener(x)
-
-		// }
-		// }
-
-		//push;
-
-		// if (this.userAnswerData.answer.id.exist(answerId) in questionId) {
-		// 	remove;
-		// }
-
-		// else {
-		// 	push
-		// };
-
-		// this.userAnswerData.user.id = 'b5dbc387-eed6-42fb-b9d8-525094a171b0';
-		// this.userAnswerData.answer.push({ id: event.value, title: `answer-${event.value}` });
-		// this.isSelected = true;
 	}
 
 	sendAnswer(event: any) {
