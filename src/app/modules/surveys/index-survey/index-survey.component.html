@@ -55,14 +55,14 @@
 						>
 					</button>
 
-					<button
+					<!-- <button
 						routerLink="/questions/"
 						mat-icon-button
 						aria-label="Example icon button with a vertical three dot icon"
 						color="primary"
 					>
 						<mat-icon>build</mat-icon>
-					</button>
+					</button> -->
 
 					<button
 						(click)="openDialogEdit(element, $event)"
@@ -82,13 +82,32 @@
 						<mat-icon>delete_outline</mat-icon>
 					</button>
 
-					<button
+					<!-- <button
 						routerLink="/surveys/{{ element.id }}/assing"
 						mat-icon-button
 						aria-label="Example icon button with a vertical three dot icon"
 						color="accent"
 					>
 						<mat-icon>share</mat-icon>
+					</button> -->
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="Downloads">
+				<mat-header-cell *matHeaderCellDef>Downloads</mat-header-cell>
+				<mat-cell *matCellDef="let element">
+					<button
+						(click)="download()"
+						mat-icon-button
+						aria-label="Example icon button with a vertical three dot icon"
+						color="primary"
+					>
+						Download configuration
+						<mat-icon
+							matTooltip="Download configration"
+							matTooltipPosition="right"
+							>file_download</mat-icon
+						>
 					</button>
 				</mat-cell>
 			</ng-container>

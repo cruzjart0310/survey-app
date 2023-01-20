@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -32,10 +32,12 @@ export class QuestionService {
 		return this.http.post<QuestionDto>(url, question);
 	}
 
-	public uploadFile() {
+	public uploadFile(file: Blob) {
 		debugger
-		let url = this.apiUrl + '/question';
-		return;
+		let url = this.apiUrl + '/question/UploadFile';
+		const formData = new FormData();
+		formData.append('file', file);
+		return this.http.post(url, formData, { reportProgress: true });
 	}
 
 	public edit(id: number, question: QuestionDto): Observable<QuestionDto> {

@@ -26,7 +26,7 @@ export class IndexSurveyComponent implements OnInit {
 
 	surveyData: any = [];
 	dataSource: MatTableDataSource<any> = new MatTableDataSource();
-	colunmsToShow = ['Id', 'Name', 'CreatedAt', 'Actions'];
+	colunmsToShow = ['Id', 'Name', 'CreatedAt', 'Actions', 'Downloads'];
 	paginationData: PaginationDto = { pageNumber: this.currentPage, pageSize: this.recordBypage };
 
 	@Input() model!: SurveyDto;
@@ -132,5 +132,29 @@ export class IndexSurveyComponent implements OnInit {
 
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action);
+	}
+
+	download() {
+		let file = 'cf16eea3-fcd4-46ed-aaf0-df38b0610e69.xlsx';
+		this.service.downloadFile(file)
+			.subscribe(
+				{
+					next: (response: any) => {
+						const downloadedFile = new Blob([response], { type: response.type });
+						const a = document.createElement('a');
+						a.setAttribute('style', 'display:none;');
+						document.body.appendChild(a);
+						a.download = file;
+						a.href = URL.createObjectURL(downloadedFile);
+						a.target = '_blank';
+						a.click();
+						document.body.removeChild(a);
+					},
+					error: (error: any) => {
+						console.error(error);
+					},
+					complete: () => console.log('completed')
+				}
+			);
 	}
 }

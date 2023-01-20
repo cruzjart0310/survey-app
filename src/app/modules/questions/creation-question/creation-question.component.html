@@ -4,8 +4,13 @@
 	<form (submit)="onSubmit()" [formGroup]="questionForm">
 		<p>
 			<mat-form-field appearance="outline">
+				<!-- {{ isFileSelected }} -->
 				<mat-label>Name*</mat-label>
-				<input formControlName="name" matInput />
+				<input
+					formControlName="name"
+					matInput
+					[attr.disabled]="isFileSelected"
+				/>
 				<mat-error *ngIf="questionForm.invalid"
 					>Name required</mat-error
 				>
@@ -18,7 +23,7 @@
 				<mat-select
 					formControlName="type"
 					(opened)="getTypes()"
-					required
+					[disabled]="isFileSelected"
 				>
 					<mat-option>None</mat-option>
 					<mat-option *ngFor="let type of types" [value]="type.id">{{
@@ -30,7 +35,6 @@
 				>
 			</mat-form-field>
 		</p>
-
 		<p>
 			<mat-form-field appearance="outline">
 				<mat-label>Survey*</mat-label>
@@ -40,7 +44,7 @@
 					placeholder="Search a survey"
 					matInput
 					[matAutocomplete]="auto"
-					required
+					[attr.disabled]="isFileSelected"
 				/>
 				<mat-error *ngIf="questionForm.invalid"
 					>Survey required</mat-error
@@ -69,6 +73,7 @@
 			<br />
 			<section>
 				<button
+					*ngIf="isFileSelected"
 					type="button"
 					mat-raised-button
 					(click)="fileInput.click()"
@@ -89,6 +94,7 @@
 </div>
 <div mat-dialog-actions>
 	<button
+		*ngIf="!isFileSelected"
 		mat-stroked-button
 		cdkFocusInitial
 		color="primary"
@@ -96,6 +102,16 @@
 		[disabled]="questionForm.invalid || !isSelected"
 	>
 		Ok
+	</button>
+
+	<button
+		*ngIf="isFileSelected"
+		mat-stroked-button
+		cdkFocusInitial
+		color="primary"
+		(click)="uploadFile($event)"
+	>
+		Upload file
 	</button>
 	<a mat-stroked-button (click)="onClose()"> Cancel </a>
 </div>

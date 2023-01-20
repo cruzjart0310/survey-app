@@ -30,6 +30,8 @@ import { SurveyAssingComponent } from './modules/surveys/survey-assing/survey-as
 import { FullNamePipe } from './modules/surveys/pipes/full-name.pipe';
 import { InterceptorService } from './modules/account/security/interceptors/interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UploadComponent } from './modules/questions/upload/upload.component';
+import { DownloadComponent } from './modules/questions/download/download.component';
 
 @NgModule({
 	declarations: [
@@ -58,7 +60,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 		PasswordForgotComponent,
 		PasswordChangeComponent,
 
-		FullNamePipe
+		FullNamePipe,
+
+		UploadComponent,
+		DownloadComponent,
 	],
 	imports: [
 		CommonModule,

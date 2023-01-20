@@ -17,6 +17,7 @@ import { QuestionService } from '../question.service';
 })
 export class CreationQuestionComponent implements OnInit {
 
+	file: Blob = new Blob();
 	types: any[] = [];
 	surveys: any[] = [];
 	isSelected: boolean = false;
@@ -60,8 +61,16 @@ export class CreationQuestionComponent implements OnInit {
 			});
 	}
 
-	uploadFile() {
-
+	uploadFile(event: any) {
+		this.service.uploadFile(this.file).subscribe({
+			next: (response: any) => {
+				this.dialogRef.close();
+			},
+			error: (error) => {
+				console.error('error questions:' + JSON.parse(error));
+			},
+			complete: () => console.log('completed')
+		});
 	}
 
 	getTypes(): void {
@@ -128,7 +137,9 @@ export class CreationQuestionComponent implements OnInit {
 	}
 
 	onChange(event: any) {
-		console.log(event)
+		if (event.target.files && event.target.files.length > 0) {
+			this.file = event.target.files[0];
+		}
 	}
 
 	onSelect(event: any) {
