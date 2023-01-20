@@ -1,0 +1,14 @@
+<p>example event binding</p>
+
+<p>the name is: {{ name }}</p>
+
+<input type="text" [(ngModel)]="name" />
+
+<ul *ngFor="let city of cities">
+	<li (click)="onClicked(city)">{{ city }}</li>
+</ul>
+
+<div *ngIf="selection">
+	<p>Your selection is: {{ selection }}</p>
+	<button (click)="onClear()">Clear you seletion</button>
+</div>

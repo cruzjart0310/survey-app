@@ -14,7 +14,9 @@ export class MenuComponent implements OnInit {
 		public service: SecurityService) { }
 
 	ngOnInit(): void {
-
+		this.service.selectedCity$.subscribe((city: any) => {
+			console.log(city);
+		})
 	}
 
 	redirect() {

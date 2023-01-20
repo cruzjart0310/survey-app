@@ -1,3 +1,13 @@
 .backgroud {
 	background-color: red;
 }
+
+.container-elements {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.marked {
+	color: red;
+}
