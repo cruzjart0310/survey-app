@@ -25,7 +25,9 @@ import { SurveyAssingComponent } from './surveys/survey-assing/survey-assing.com
 import { FullNamePipe } from './surveys/pipes/full-name.pipe';
 import { UploadComponent } from './questions/upload/upload.component';
 import { DownloadComponent } from './questions/download/download.component';
-import { FileManagerComponent } from './questions/file-manager/file-manager.component';
+import { HomeGalleryComponent } from './galleries/home-gallery/home-gallery.component';
+import { ListGalleryComponent } from './galleries/list-gallery/list-gallery.component';
+import { RatingComponent } from './galleries/rating/rating.component';
 //import { SolveSurveryComponent } from './surveys/solve-survery/solve-survery.component';
 // import { LayoutModule } from '../layout/layout.module';
 
@@ -64,6 +66,9 @@ import { FileManagerComponent } from './questions/file-manager/file-manager.comp
 		//   SurveyAssingComponent
 
 		FullNamePipe,
+		//   RatingComponent,
+		//   ListGalleryComponent,
+		//   HomeGalleryComponent,
 		//   UploadComponent,
 		//   DownloadComponent,
 		//   FileManagerComponent,

@@ -1,0 +1,30 @@
+<ng-container>
+	<div class="series-container">
+		<ng-container *ngIf="series && series.length > 0">
+			<div *ngFor="let serie of series" class="serie-container">
+				<p>
+					<a>{{ serie.title }}</a>
+				</p>
+				<a>
+					<img [src]="serie.url" alt="Poster" />
+				</a>
+
+				<div class="btn-acciones">
+					<a mat-flat-button color="primary"> Editar </a>
+					<button mat-flat-button color="warn">Borrar</button>
+				</div>
+
+				<div>
+					<app-rating
+						[maxRating]="6"
+						(rated)="handleRated($event)"
+					></app-rating>
+				</div>
+
+				<span class="points">
+					Points: <b>{{ points }}</b>
+				</span>
+			</div>
+		</ng-container>
+	</div>
+</ng-container>

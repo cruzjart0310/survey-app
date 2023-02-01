@@ -13,6 +13,11 @@
 	<div>
 		<a mat-button class="title-logo" mat-button routerLink="">App</a>
 	</div>
+	<div>
+		<a mat-button class="title-logo" mat-button [routerLink]="['galleries']"
+			>Gallery</a
+		>
+	</div>
 	<app-authorize [rol]="'administrator'">
 		<ng-container authorized>
 			<div>

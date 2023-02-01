@@ -32,6 +32,9 @@ import { InterceptorService } from './modules/account/security/interceptors/inte
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UploadComponent } from './modules/questions/upload/upload.component';
 import { DownloadComponent } from './modules/questions/download/download.component';
+import { HomeGalleryComponent } from './modules/galleries/home-gallery/home-gallery.component';
+import { ListGalleryComponent } from './modules/galleries/list-gallery/list-gallery.component';
+import { RatingComponent } from './modules/galleries/rating/rating.component';
 
 @NgModule({
 	declarations: [
@@ -64,6 +67,10 @@ import { DownloadComponent } from './modules/questions/download/download.compone
 
 		UploadComponent,
 		DownloadComponent,
+
+		HomeGalleryComponent,
+		ListGalleryComponent,
+		RatingComponent,
 	],
 	imports: [
 		CommonModule,

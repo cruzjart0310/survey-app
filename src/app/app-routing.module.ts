@@ -8,6 +8,7 @@ import { RegisterComponent } from './modules/account/register/register.component
 import { IsAdminGuard } from './modules/account/security/guard/is-admin.guard';
 import { IsUserGuard } from './modules/account/security/guard/is-user.guard';
 import { HomeAnswerComponent } from './modules/answers/home-answer/home-answer.component';
+import { HomeGalleryComponent } from './modules/galleries/home-gallery/home-gallery.component';
 import { HomePermissionComponent } from './modules/permissons/home-permission/home-permission.component';
 import { HomeQuestionComponent } from './modules/questions/home-question/home-question.component';
 import { HomeRolComponent } from './modules/roles/home-rol/home-rol.component';
@@ -22,6 +23,7 @@ import { HomeUsersComponent } from './modules/users/home-users/home-users.compon
 
 const routes: Routes = [
 	{ path: '', component: LandingPageComponent },
+	{ path: 'galleries', component: HomeGalleryComponent },
 	{ path: 'surveys', component: IndexSurveyComponent, canActivate: [IsAdminGuard] },
 	{ path: 'surveys/details/:id', component: DetailsSurveyComponent, canActivate: [IsAdminGuard] },
 	{ path: 'surveys/:id/solve', component: SolveSurveryComponent, canActivate: [IsAdminGuard] },
@@ -33,7 +35,6 @@ const routes: Routes = [
 	{ path: 'roles', component: HomeRolComponent, canActivate: [IsUserGuard] },
 	{ path: 'permissions', component: HomePermissionComponent, canActivate: [IsUserGuard] },
 	{ path: 'teams', component: HomeTeamComponent, canActivate: [IsUserGuard] },
-
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'password-forgot', component: PasswordForgotComponent },
